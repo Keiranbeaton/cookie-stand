@@ -1,0 +1,16 @@
+body {
+  background-color: salmon;
+  color: rgb(7, 247, 53);
+}
+
+h1, h2 {
+  font-family: Oswald;
+  background-color: black;
+  color:rgb(40, 186, 240);
+}
+
+p {
+  font-family: Times;
+  background-color: rgb(40, 186, 240);
+  color: black;
+}
