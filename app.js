@@ -4,6 +4,56 @@ var salesProjectionsSouthCenter = document.getElementById('salesProjectionsSouth
 var salesProjectionsBellSquare = document.getElementById('salesProjectionsBellSquare');
 var salesProjectionsAlki = document.getElementById('salesProjectionsAlki');
 
+function calcHourlyCust(min, max) {
+  return Math.floor(Math.random() * (max-min+1)) + min;
+}
+
+function Store(min, max, avgSalesPerCust, locName) {
+  this.min = min;
+  this.max = max;
+  this.avgSalesPerCust = avgSalesPerCust;
+  this.locName = locName;
+  this.dailySales = [];
+  for(var i = 0; i < 15; i++) {
+
+  }
+
+}
+
+
+function calcHourlySales(object) {
+  return Math.floor(calcHourlyCust(object)) * Math.floor(object.avgSalesPerCust);
+}
+
+function calcDailyTotal(object) {
+  var salesByHour = [0];
+  var dailyTotal = 0;
+  for (i=0; i<15; i++) {
+    salesByHour[i] = calcHourlySales(object);
+    dailyTotal += salesByHour[i];
+    if (i < 6) {
+      var newLi = document.createElement('li');
+      newLi.value = salesByHour[i];
+      newLi.textContent = (i+6) + 'am: ' + salesByHour[i] + ' cookies';
+      (object.tagLink).appendChild(newLi);
+    } else if (i > 6) {
+      var newLi = document.createElement('li');
+      newLi.value = salesByHour[i];
+      newLi.textContent = (i-6)+ 'pm: ' + salesByHour[i] + ' cookies';
+      (object.tagLink).appendChild(newLi);
+    } else {
+      var newLi = document.createElement('li');
+      newLi.value = salesByHour[i];
+      newLi.textContent = (i+6) + 'pm: ' + salesByHour[i] + ' cookies';
+      (object.tagLink).appendChild(newLi);
+    }
+  }
+  var newLi = document.createElement('li');
+  newLi.value = dailyTotal;
+  newLi.textContent = 'Total: ' + dailyTotal + ' cookies';
+  (object.tagLink).appendChild(newLi);
+  return dailyTotal;
+}
 var pikePlace = {
   minCust: 17,
   maxCust: 88,
@@ -44,43 +94,6 @@ var alki = {
   tagLink: salesProjectionsAlki
 }
 
-function calcHourlyCust(object) {
-  return Math.floor(Math.random() * (object.maxCust-object.minCust)) + object.minCust;
-}
-
-function calcHourlySales(object) {
-  return Math.floor(calcHourlyCust(object)) * Math.floor(object.avgSalesPerCust);
-}
-
-function calcDailyTotal(object) {
-  var salesByHour = [0];
-  var dailyTotal = 0;
-  for (i=0; i<15; i++) {
-    salesByHour[i] = calcHourlySales(object);
-    dailyTotal += salesByHour[i];
-    if (i < 6) {
-    var newLi = document.createElement('li');
-    newLi.value = salesByHour[i];
-    newLi.textContent = (i+6) + 'am: ' + salesByHour[i] + ' cookies';
-    (object.tagLink).appendChild(newLi);
-  } else if (i > 6) {
-    var newLi = document.createElement('li');
-    newLi.value = salesByHour[i];
-    newLi.textContent = (i-6)+ 'pm: ' + salesByHour[i] + ' cookies';
-    (object.tagLink).appendChild(newLi);
-    } else {
-    var newLi = document.createElement('li');
-    newLi.value = salesByHour[i];
-    newLi.textContent = (i+6) + 'pm: ' + salesByHour[i] + ' cookies';
-    (object.tagLink).appendChild(newLi);
-    }
-  }
-  var newLi = document.createElement('li');
-  newLi.value = dailyTotal;
-  newLi.textContent = 'Total: ' + dailyTotal + ' cookies';
-  (object.tagLink).appendChild(newLi);
-  return dailyTotal;
-}
 
 calcDailyTotal(pikePlace);
 calcDailyTotal(seaTac);
