@@ -81,3 +81,9 @@ function calcDailyTotal(object) {
   (object.tagLink).appendChild(newLi);
   return dailyTotal;
 }
+
+calcDailyTotal(pikePlace);
+calcDailyTotal(seaTac);
+calcDailyTotal(southcenter);
+calcDailyTotal(bellSquare);
+calcDailyTotal(alki);
