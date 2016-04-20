@@ -41,6 +41,29 @@ function Store(min, max, avgSalesPerCust, locName) {
   storesArray.push(this);
 }
 
+function handleNewStore(event){
+  event.preventDefault();
+
+  var locationValue = event.target.location.value;
+  var minValue = parseInt(event.target.min.value);
+  var maxValue = parseInt(event.target.max.value);
+  var avgValue = parseFloat(event.target.avg.value);
+
+  if(!locationValue || !minValue || !maxValue || !avgValue){
+    alert('Please fill out all fields');
+  } else if(maxValue < minValue){
+    alert('The maximum customers must be greater than the minimum.');
+  } else {
+    var newStore = new Store(minValue, maxValue, avgValue, locationValue);
+    newStore.postDailySales();
+
+    event.target.location.value = null;
+    event.target.min.value = null;
+    event.target.max.value = null;
+    event.target.avg.value = null;
+  }
+}
+
 var pikePlace = new Store(17, 88, 5.2, 'Pike Place Market');
 var seaTac = new Store(6, 24, 1.2, 'SeaTac Airport');
 var southcenter = new Store(11, 38, 1.9, 'Southcenter');
@@ -70,82 +93,5 @@ for (var i = 0; i < storesArray.length; i++){
   storesArray[i].postDailySales();
 }
 
-// function calcHourlySales(object) {
-//   return Math.floor(calcHourlyCust(object)) * Math.floor(object.avgSalesPerCust);
-// }
-//
-// function calcDailyTotal(object) {
-//   var salesByHour = [0];
-//   var dailyTotal = 0;
-//   for (i=0; i<15; i++) {
-//     salesByHour[i] = calcHourlySales(object);
-//     dailyTotal += salesByHour[i];
-//     if (i < 6) {
-//       var newLi = document.createElement('li');
-//       newLi.value = salesByHour[i];
-//       newLi.textContent = (i+6) + 'am: ' + salesByHour[i] + ' cookies';
-//       (object.tagLink).appendChild(newLi);
-//     } else if (i > 6) {
-//       var newLi = document.createElement('li');
-//       newLi.value = salesByHour[i];
-//       newLi.textContent = (i-6)+ 'pm: ' + salesByHour[i] + ' cookies';
-//       (object.tagLink).appendChild(newLi);
-//     } else {
-//       var newLi = document.createElement('li');
-//       newLi.value = salesByHour[i];
-//       newLi.textContent = (i+6) + 'pm: ' + salesByHour[i] + ' cookies';
-//       (object.tagLink).appendChild(newLi);
-//     }
-//   }
-//   var newLi = document.createElement('li');
-//   newLi.value = dailyTotal;
-//   newLi.textContent = 'Total: ' + dailyTotal + ' cookies';
-//   (object.tagLink).appendChild(newLi);
-//   return dailyTotal;
-// }
-// var pikePlace = {
-//   minCust: 17,
-//   maxCust: 88,
-//   avgSalesPerCust: 5.2,
-//   locName: 'Pike Place Market',
-//   tagLink: salesProjectionsPikePlace
-// };
-//
-// var seaTac = {
-//   minCust: 6,
-//   maxCust: 24,
-//   avgSalesPerCust: 1.2,
-//   locName: 'SeaTac Airport',
-//   tagLink: salesProjectionsSeaTac
-// }
-//
-// var southcenter = {
-//   minCust: 11,
-//   maxCust: 38,
-//   avgSalesPerCust: 1.9,
-//   locName: 'Southcenter',
-//   tagLink: salesProjectionsSouthCenter
-// }
-//
-// var bellSquare = {
-//   minCust: 20,
-//   maxCust: 48,
-//   avgSalesPerCust: 3.3,
-//   locName: 'Bellevue Square',
-//   tagLink: salesProjectionsBellSquare
-// }
-//
-// var alki = {
-//   minCust: 3,
-//   maxCust: 24,
-//   avgSalesPerCust: 2.6,
-//   locName: 'Alki Beach',
-//   tagLink: salesProjectionsAlki
-// }
-//
-//
-// calcDailyTotal(pikePlace);
-// calcDailyTotal(seaTac);
-// calcDailyTotal(southcenter);
-// calcDailyTotal(bellSquare);
-// calcDailyTotal(alki);
+var form = document.getElementById('form');
+form.addEventListener('submit', handleNewStore);
