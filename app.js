@@ -71,8 +71,9 @@ var bellSquare = new Store(20, 48, 3.3, 'Bellevue Square');
 var alki = new Store(3, 24, 2.6, 'Alki Beach');
 
 var trHeader = document.createElement('tr');
-var blankHeader = document.createElement('th');
-trHeader.appendChild(blankHeader);
+var locationHeader = document.createElement('th');
+locationHeader.textContent = 'Store Location';
+trHeader.appendChild(locationHeader);
 for (var header = 0; header < 15; header++){
   var headerEl = document.createElement('th');
   if(header < 6){

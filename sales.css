@@ -1,0 +1,21 @@
+body {
+  background-color: rgba(223, 235, 177, 0.7);
+  font-family: sans-serif;
+}
+
+table {
+  border-style: solid;
+  border-width: thin;
+  margin-top: 10px;
+}
+
+form {
+  width: 100%;
+}
+label {
+  width: 15%;
+}
+
+input {
+  width: 10%;
+}

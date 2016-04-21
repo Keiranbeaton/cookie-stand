@@ -1,16 +1,97 @@
+
 body {
-  background-color: salmon;
-  color: rgb(7, 247, 53);
+  background-size: 100% 100%;
+  background-image:url(https://github.com/codefellows/seattle-201d4/blob/master/class-09-css-layout/lab/assets/cutter.jpeg?raw=true);
+  background-attachment: fixed;
 }
 
-h1, h2 {
-  font-family: Oswald;
-  background-color: black;
-  color:rgb(40, 186, 240);
+.top-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-p {
-  font-family: Times;
-  background-color: rgb(40, 186, 240);
-  color: black;
+.main-title {
+  margin-bottom: 0px;
+  font-size: 50px;
+}
+
+.subtitle {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.title-picture {
+  border-style: none;
+}
+
+h1, h3 {
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  color: rgb(168, 22, 22)
+}
+
+.center-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:space-between;
+}
+
+.cookie-class {
+  display: flex;
+  width: 45%;
+  flex-direction: column-reverse;
+}
+
+.menu {
+  display: flex;
+  width: 45%;
+  flex-direction: column;
+}
+
+.description {
+  background-color: rgba(168, 22, 22, 0.65);
+  font-family: 'Fjalla One', sans-serif;
+  border-style: groove;
+  border-width: 3px;
+  border-color: black;
+  padding: 5px;
+}
+
+.merchandise {
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.salmon {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 45%;
+}
+
+.shirt {
+  width: 45%;
+}
+
+.store-information {
+  display: flex;
+  background-color: rgba(168, 22, 22, 0.65);
+  text-align: center;
+  justify-content: space-between;
+  border-style: groove;
+  border-width: 3px;
+  border-color: black;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+img {
+  border-style: outset;
+  border-width: 5px;
+  border-color: rgba(168, 22, 22, 0.65);
 }
